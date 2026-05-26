@@ -1,0 +1,948 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>2026 상반기 성과 보고</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            orange: { DEFAULT: '#FF5C00', light: '#FF7A2B', dark: '#CC4A00' },
+            dark: { DEFAULT: '#0a0a0a', card: '#1a1a1a', modal: '#141414', nav: 'rgba(26,26,26,0.85)' }
+          },
+          fontFamily: { sans: ['Pretendard', 'Apple SD Gothic Neo', 'sans-serif'] }
+        }
+      }
+    }
+  </script>
+  <style>
+    @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/variable/pretendardvariable.css');
+    html { scroll-behavior: smooth; }
+    body { background-color: #0a0a0a; color: #fff; font-family: 'Pretendard Variable', 'Apple SD Gothic Neo', sans-serif; }
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: #0a0a0a; }
+    ::-webkit-scrollbar-thumb { background: #333; border-radius: 3px; }
+    .card-hover { transition: border-color 0.25s, transform 0.25s, box-shadow 0.25s; }
+    .card-hover:hover { border-color: #FF5C00 !important; transform: translateY(-4px); box-shadow: 0 12px 40px rgba(255,92,0,0.15); }
+    .modal-overlay { transition: opacity 0.2s; }
+    .modal-inner { transition: transform 0.25s, opacity 0.25s; }
+    .pill-nav { backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); }
+    .table-row:nth-child(even) { background: rgba(255,92,0,0.04); }
+    .tag { background: rgba(255,92,0,0.12); color: #FF7A2B; border: 1px solid rgba(255,92,0,0.25); }
+    .section-label { color: #FF5C00; font-size: 0.7rem; letter-spacing: 0.15em; font-weight: 700; text-transform: uppercase; }
+    .hero-gradient { background: radial-gradient(ellipse 70% 50% at 50% 0%, rgba(255,92,0,0.12) 0%, transparent 70%); }
+    .nav-link { transition: color 0.2s, background 0.2s; }
+    .nav-link:hover { color: #FF5C00; }
+    .thumb-placeholder { background: linear-gradient(135deg, #1e1e1e 0%, #2a2a2a 100%); }
+  </style>
+</head>
+<body class="min-h-screen">
+
+<!-- Hero -->
+<section class="relative hero-gradient pt-32 pb-24 px-6 text-center overflow-hidden">
+  <div class="absolute inset-0 pointer-events-none">
+    <div style="position:absolute;top:10%;left:50%;transform:translateX(-50%);width:600px;height:600px;border-radius:50%;background:radial-gradient(circle,rgba(255,92,0,0.06) 0%,transparent 70%);"></div>
+  </div>
+  <div class="relative z-10 max-w-4xl mx-auto">
+    <p class="section-label mb-5">Performance Report · H1 2026</p>
+    <h1 class="text-5xl md:text-7xl font-black leading-tight tracking-tight mb-6">
+      2026<br/><span style="color:#FF5C00;">상반기</span><br/>성과 보고
+    </h1>
+    <p class="text-gray-400 text-lg md:text-xl max-w-xl mx-auto leading-relaxed">
+      UX 기획 · 콘텐츠 설계 · AI 서비스 구축<br/>5개 프로젝트의 핵심 성과를 기록합니다.
+    </p>
+    <div class="mt-10 flex justify-center gap-8 text-center">
+      <div><p class="text-3xl font-black" style="color:#FF5C00;">5</p><p class="text-xs text-gray-500 mt-1">Projects</p></div>
+      <div class="w-px bg-gray-800"></div>
+      <div><p class="text-3xl font-black" style="color:#FF5C00;">H1</p><p class="text-xs text-gray-500 mt-1">2026</p></div>
+      <div class="w-px bg-gray-800"></div>
+      <div><p class="text-3xl font-black" style="color:#FF5C00;">UX</p><p class="text-xs text-gray-500 mt-1">Planning</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- Sticky Pill Nav -->
+<div class="sticky top-4 z-40 flex justify-center px-4" id="pill-nav">
+  <nav class="pill-nav rounded-full px-3 py-2 flex gap-1 flex-wrap justify-center" style="background:rgba(20,20,20,0.9);border:1px solid rgba(255,255,255,0.08);">
+    <a href="#proj1" class="nav-link text-xs md:text-sm text-gray-300 px-4 py-2 rounded-full whitespace-nowrap">FAQ 개선</a>
+    <a href="#proj2" class="nav-link text-xs md:text-sm text-gray-300 px-4 py-2 rounded-full whitespace-nowrap">시스템 메일</a>
+    <a href="#proj3" class="nav-link text-xs md:text-sm text-gray-300 px-4 py-2 rounded-full whitespace-nowrap">AI 챗봇</a>
+    <a href="#proj4" class="nav-link text-xs md:text-sm text-gray-300 px-4 py-2 rounded-full whitespace-nowrap">AI UX라이팅</a>
+    <a href="#proj5" class="nav-link text-xs md:text-sm text-gray-300 px-4 py-2 rounded-full whitespace-nowrap">닷컴 개선</a>
+  </nav>
+</div>
+
+<!-- Project Cards -->
+<section class="max-w-5xl mx-auto px-4 py-20 space-y-6">
+
+  <!-- Card 1 -->
+  <div id="proj1" class="card-hover rounded-2xl p-7 md:p-10 cursor-pointer border border-transparent"
+       style="background:#1a1a1a;" onclick="openModal('modal1')">
+    <div class="flex flex-col md:flex-row md:items-start md:justify-between gap-4">
+      <div class="flex-1">
+        <p class="section-label mb-2">Project 01</p>
+        <h2 class="text-2xl md:text-3xl font-black mb-2">FAQ 개선</h2>
+        <p class="text-gray-500 text-sm mb-4">2026.04.08 ~ 진행 중</p>
+        <div class="flex flex-wrap gap-2">
+          <span class="tag text-xs px-3 py-1 rounded-full">UX라이팅</span>
+          <span class="tag text-xs px-3 py-1 rounded-full">AEO/GEO</span>
+          <span class="tag text-xs px-3 py-1 rounded-full">콘텐츠 설계</span>
+          <span class="tag text-xs px-3 py-1 rounded-full">레퍼런스 분석</span>
+        </div>
+      </div>
+      <div class="flex items-center gap-3 text-gray-600 text-sm mt-2 md:mt-0">
+        <span>상세 보기</span>
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#FF5C00" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </div>
+    </div>
+    <p class="text-gray-400 text-sm mt-5 leading-relaxed line-clamp-2">
+      UX라이팅 기반 콘텐츠 전면 개선 및 AEO/GEO 환경 대응 FAQ 구조 설계. 타사 10개 레퍼런스 분석을 통한 탐색 구조 최적화.
+    </p>
+  </div>
+
+  <!-- Card 2 -->
+  <div id="proj2" class="card-hover rounded-2xl p-7 md:p-10 cursor-pointer border border-transparent"
+       style="background:#1a1a1a;" onclick="openModal('modal2')">
+    <div class="flex flex-col md:flex-row md:items-start md:justify-between gap-4">
+      <div class="flex-1">
+        <p class="section-label mb-2">Project 02</p>
+        <h2 class="text-2xl md:text-3xl font-black mb-2">시스템 메일 개선</h2>
+        <p class="text-gray-500 text-sm mb-4">2025.09.22 ~ 진행 중</p>
+        <div class="flex flex-wrap gap-2">
+          <span class="tag text-xs px-3 py-1 rounded-full">UX/UI 설계</span>
+          <span class="tag text-xs px-3 py-1 rounded-full">와이어프레임</span>
+          <span class="tag text-xs px-3 py-1 rounded-full">구독 서비스</span>
+          <span class="tag text-xs px-3 py-1 rounded-full">협업 리딩</span>
+        </div>
+      </div>
+      <div class="flex items-center gap-3 text-gray-600 text-sm mt-2 md:mt-0">
+        <span>상세 보기</span>
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#FF5C00" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </div>
+    </div>
+    <p class="text-gray-400 text-sm mt-5 leading-relaxed line-clamp-2">
+      구독 서비스 확대에 따른 시스템 메일 UX/UI 전면 개선. 주문·배송·재입고 등 다양한 케이스 구조화 및 퍼블리싱 반영 완료.
+    </p>
+  </div>
+
+  <!-- Card 3 -->
+  <div id="proj3" class="card-hover rounded-2xl p-7 md:p-10 cursor-pointer border border-transparent"
+       style="background:#1a1a1a;" onclick="openModal('modal3')">
+    <div class="flex flex-col md:flex-row md:items-start md:justify-between gap-4">
+      <div class="flex-1">
+        <p class="section-label mb-2">Project 03</p>
+        <h2 class="text-2xl md:text-3xl font-black mb-2">AI 챗봇 개선</h2>
+        <p class="text-gray-500 text-sm mb-4">2026.01 ~ 진행 중</p>
+        <div class="flex flex-wrap gap-2">
+          <span class="tag text-xs px-3 py-1 rounded-full">챗봇 시나리오</span>
+          <span class="tag text-xs px-3 py-1 rounded-full">데이터 분석</span>
+          <span class="tag text-xs px-3 py-1 rounded-full">온보딩 UX</span>
+          <span class="tag text-xs px-3 py-1 rounded-full">AI 기반 탐색</span>
+        </div>
+      </div>
+      <div class="flex items-center gap-3 text-gray-600 text-sm mt-2 md:mt-0">
+        <span>상세 보기</span>
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#FF5C00" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </div>
+    </div>
+    <p class="text-gray-400 text-sm mt-5 leading-relaxed line-clamp-2">
+      구독 특화 챗봇 시나리오 설계 및 루비콘 대화 데이터 분석. 선택 근거 중심의 UX 방향성 도출로 AX·D2C 협업 기반 마련.
+    </p>
+  </div>
+
+  <!-- Card 4 -->
+  <div id="proj4" class="card-hover rounded-2xl p-7 md:p-10 cursor-pointer border border-transparent"
+       style="background:#1a1a1a;" onclick="openModal('modal4')">
+    <div class="flex flex-col md:flex-row md:items-start md:justify-between gap-4">
+      <div class="flex-1">
+        <p class="section-label mb-2">Project 04</p>
+        <h2 class="text-2xl md:text-3xl font-black mb-2">AI 자동 점검 UX라이팅 서비스 구축</h2>
+        <p class="text-gray-500 text-sm mb-4">2025.04 ~ 진행 중</p>
+        <div class="flex flex-wrap gap-2">
+          <span class="tag text-xs px-3 py-1 rounded-full">프롬프트 설계</span>
+          <span class="tag text-xs px-3 py-1 rounded-full">Claude Code</span>
+          <span class="tag text-xs px-3 py-1 rounded-full">MVP 구축</span>
+          <span class="tag text-xs px-3 py-1 rounded-full">PO 역할</span>
+        </div>
+      </div>
+      <div class="flex items-center gap-3 text-gray-600 text-sm mt-2 md:mt-0">
+        <span>상세 보기</span>
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#FF5C00" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </div>
+    </div>
+    <p class="text-gray-400 text-sm mt-5 leading-relaxed line-clamp-2">
+      AI 기반 UX라이팅 자동 점검 서비스 MVP 직접 기획·구축. Claude Code 활용 프론트 구현 및 WBS 기반 프로젝트 운영 리딩.
+    </p>
+  </div>
+
+  <!-- Card 5 -->
+  <div id="proj5" class="card-hover rounded-2xl p-7 md:p-10 cursor-pointer border border-transparent"
+       style="background:#1a1a1a;" onclick="openModal('modal5')">
+    <div class="flex flex-col md:flex-row md:items-start md:justify-between gap-4">
+      <div class="flex-1">
+        <p class="section-label mb-2">Project 05</p>
+        <h2 class="text-2xl md:text-3xl font-black mb-2">닷컴 개선 프로젝트</h2>
+        <p class="text-gray-500 text-sm mb-4">2026 상반기</p>
+        <div class="flex flex-wrap gap-2">
+          <span class="tag text-xs px-3 py-1 rounded-full">O2O UX</span>
+          <span class="tag text-xs px-3 py-1 rounded-full">예약 플로우</span>
+          <span class="tag text-xs px-3 py-1 rounded-full">비교하기 팝업</span>
+          <span class="tag text-xs px-3 py-1 rounded-full">PRD</span>
+        </div>
+      </div>
+      <div class="flex items-center gap-3 text-gray-600 text-sm mt-2 md:mt-0">
+        <span>상세 보기</span>
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#FF5C00" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </div>
+    </div>
+    <p class="text-gray-400 text-sm mt-5 leading-relaxed line-clamp-2">
+      매장상담 예약 UX 개선(상담사 선택 플로우 신규 설계) + 비교하기 팝업 개선(2개→3개 확장). O2O 경험 연결 강화.
+    </p>
+  </div>
+
+</section>
+
+<!-- Footer -->
+<footer class="text-center text-gray-700 text-xs pb-12">2026 H1 Performance Report</footer>
+
+
+<!-- ============================
+     MODALS
+============================= -->
+
+<!-- Modal 1: FAQ -->
+<div id="modal1" class="modal-overlay fixed inset-0 z-50 flex items-start justify-center px-4 py-8 opacity-0 pointer-events-none" style="background:rgba(0,0,0,0.85);overflow-y:auto;">
+  <div class="modal-inner w-full max-w-3xl rounded-2xl p-8 md:p-12 relative" style="background:#141414;border:1px solid rgba(255,255,255,0.07);transform:translateY(24px);opacity:0;">
+    <button onclick="closeModal('modal1')" class="absolute top-6 right-6 text-gray-600 hover:text-white transition-colors">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>
+    </button>
+
+    <p class="section-label mb-3">Project 01</p>
+    <h2 class="text-3xl md:text-4xl font-black mb-2">FAQ 개선</h2>
+    <p class="text-gray-500 text-sm mb-8">2026.04.08 ~ 진행 중</p>
+
+    <div class="space-y-10">
+      <!-- 개요 -->
+      <div>
+        <h3 class="text-lg font-bold mb-3" style="color:#FF5C00;">프로젝트 개요</h3>
+        <div class="text-gray-300 text-sm leading-relaxed space-y-2">
+          <p><span class="text-gray-500">기간</span>&nbsp;&nbsp;2026.04.08 ~</p>
+          <p class="font-semibold text-white mt-2">상반기 목표</p>
+          <ul class="list-disc list-inside text-gray-400 space-y-1 ml-2">
+            <li>UX라이팅 지원을 통한 전체 콘텐츠 개선 및 라이브</li>
+            <li>FAQ 페이지 UX/UI 개편</li>
+          </ul>
+          <p class="font-semibold text-white mt-2">주요 역할</p>
+          <ul class="list-disc list-inside text-gray-400 space-y-1 ml-2">
+            <li>FAQ 콘텐츠 UX라이팅 개선</li>
+            <li>AEO/GEO 기반 페이지 구조 방향성 제안</li>
+            <li>FO/BO 운영 구조 기획 및 레퍼런스 분석</li>
+            <li>데이터 리포팅 및 광고주 리뷰 진행</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- 추진 배경 -->
+      <div>
+        <h3 class="text-lg font-bold mb-3" style="color:#FF5C00;">추진 배경</h3>
+        <p class="text-gray-300 text-sm leading-relaxed">
+          현행 FAQ 페이지는 글로벌 기준과 상이한 구조로 운영되고 있었으며, 고객 친화적이지 않은 표현과 정보 탐색 구조로 인해 원하는 정보를 빠르게 찾기 어려운 문제가 존재하였습니다. 이에 SEC 특성에 맞는 콘텐츠 방향성과 글로벌 운영 기준을 함께 고려하여, AEO/GEO 환경에 대응 가능한 FAQ 페이지로 개선하고자 프로젝트를 추진하였습니다. 또한 단순 고객 화면(FO) 개선에 그치지 않고, FAQ 운영 효율 향상을 위한 BO 기능 구조까지 함께 고려하여 운영 관점의 개선 방향 또한 병행 검토할 예정입니다.
+        </p>
+      </div>
+
+      <!-- 핵심 수행 내용 -->
+      <div>
+        <h3 class="text-lg font-bold mb-4" style="color:#FF5C00;">핵심 수행 내용</h3>
+        <div class="space-y-4">
+          <div class="p-4 rounded-xl" style="background:rgba(255,92,0,0.05);border:1px solid rgba(255,92,0,0.1);">
+            <p class="font-bold text-sm mb-1">1. UX라이팅 기반 콘텐츠 구조 개선</p>
+            <p class="text-gray-400 text-sm leading-relaxed">기존 FAQ 문구의 딱딱하고 기능 중심적인 표현을 고객 관점의 메시지로 재정비하였으며, 고객이 보다 쉽게 이해할 수 있도록 UX라이팅 방향성을 직접 설계 및 적용하였습니다.</p>
+          </div>
+          <div class="p-4 rounded-xl" style="background:rgba(255,92,0,0.05);border:1px solid rgba(255,92,0,0.1);">
+            <p class="font-bold text-sm mb-1">2. AEO/GEO 기반 FAQ 구조 분석 및 설계</p>
+            <p class="text-gray-400 text-sm leading-relaxed">AEO/GEO 관련 내용과 글로벌 FAQ 운영 사례를 분석하고, 타사 FAQ 10개 레퍼런스를 직접 비교 분석하여 콘텐츠 구조 및 탐색 흐름 개선 방향을 도출하였습니다.</p>
+          </div>
+          <div class="p-4 rounded-xl" style="background:rgba(255,92,0,0.05);border:1px solid rgba(255,92,0,0.1);">
+            <p class="font-bold text-sm mb-1">3. FO·BO 운영 구조 동시 고려</p>
+            <p class="text-gray-400 text-sm leading-relaxed">고객 화면 중심 개선뿐만 아니라 FAQ 운영 효율성까지 함께 고려하여 BO 기능 구조 방향성 또한 함께 검토하며 기존 BO에 대한 FAQ 내용에 대한 이해를 높였습니다.</p>
+          </div>
+          <div class="p-4 rounded-xl" style="background:rgba(255,92,0,0.05);border:1px solid rgba(255,92,0,0.1);">
+            <p class="font-bold text-sm mb-1">4. 단계별 개선 전략 제안 (Phase 1/2)</p>
+            <p class="text-gray-400 text-sm leading-relaxed">Phase 1: UX라이팅 및 콘텐츠 개선 우선 적용 → Phase 2: 페이지 전반 UX/UI 구조 개편. 고객이 개선 효과를 조기에 체감할 수 있도록 방향성을 설계하였습니다.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- 주요 성과 -->
+      <div>
+        <h3 class="text-lg font-bold mb-4" style="color:#FF5C00;">주요 성과</h3>
+        <table class="w-full text-sm">
+          <thead><tr style="border-bottom:1px solid rgba(255,92,0,0.3);">
+            <th class="text-left py-2 text-gray-500 font-medium w-1/3">항목</th>
+            <th class="text-left py-2 text-gray-500 font-medium">내용</th>
+          </tr></thead>
+          <tbody>
+            <tr class="table-row"><td class="py-3 pr-4 text-gray-400">콘텐츠 개선</td><td class="py-3 text-gray-200">UX라이팅 개선안 적용 및 라이브 완료</td></tr>
+            <tr class="table-row"><td class="py-3 pr-4 text-gray-400">데이터 분석</td><td class="py-3 text-gray-200">FAQ 데이터 분석 및 1차 리포팅 진행</td></tr>
+            <tr class="table-row"><td class="py-3 pr-4 text-gray-400">광고주 커뮤니케이션</td><td class="py-3 text-gray-200">데이터 기반 광고주 리뷰 및 방향성 제안</td></tr>
+            <tr class="table-row"><td class="py-3 pr-4 text-gray-400">레퍼런스 분석</td><td class="py-3 text-gray-200">타사 FAQ 10개 분석 및 인사이트 장표화</td></tr>
+            <tr class="table-row"><td class="py-3 pr-4 text-gray-400">구조 설계</td><td class="py-3 text-gray-200">AEO/GEO 기반 FAQ 구조 개선 방향 수립</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- 기여 포인트 -->
+      <div>
+        <h3 class="text-lg font-bold mb-4" style="color:#FF5C00;">기여 포인트</h3>
+        <div class="space-y-3">
+          <div class="flex gap-3 items-start">
+            <span class="mt-1 w-2 h-2 rounded-full flex-shrink-0" style="background:#FF5C00;"></span>
+            <div><p class="font-semibold text-sm">글로벌·로컬 운영 기준을 통합한 방향성 제안</p><p class="text-gray-400 text-sm mt-1">글로벌 현행 구조와 SEC 운영 특성 간 차이를 분석하고, 로컬 고객 특성에 맞는 탐색 구조와 UX라이팅 방향을 함께 제안하여 광고주의 의사결정을 지원하였습니다.</p></div>
+          </div>
+          <div class="flex gap-3 items-start">
+            <span class="mt-1 w-2 h-2 rounded-full flex-shrink-0" style="background:#FF5C00;"></span>
+            <div><p class="font-semibold text-sm">데이터 및 레퍼런스 기반 설득 구조 구축</p><p class="text-gray-400 text-sm mt-1">단순 아이디어 제안이 아닌 데이터 분석 결과와 레퍼런스를 기반으로 방향성을 장표화하여, 광고주가 빠르게 이해하고 의사결정할 수 있도록 지원하였습니다.</p></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 회고 -->
+      <div>
+        <h3 class="text-lg font-bold mb-4" style="color:#FF5C00;">회고 및 개선 방향</h3>
+        <div class="space-y-3">
+          <div class="p-4 rounded-xl" style="background:#1e1e1e;border:1px solid rgba(255,255,255,0.05);">
+            <p class="font-semibold text-sm mb-1">AEO/GEO 관련 사전 학습 체계 필요</p>
+            <p class="text-gray-400 text-sm leading-relaxed">신규 영역인 AEO/GEO 관련 기술 및 정책을 빠르게 학습하며 프로젝트를 진행하였으나, 학습에 예상보다 많은 시간이 소요되었습니다. 향후에는 AI·검색 정책 관련 스터디를 선제적으로 진행하고, 팀 내 공유 체계를 구축하여 변화 대응 속도를 높일 필요성을 느꼈습니다.</p>
+          </div>
+          <div class="p-4 rounded-xl" style="background:#1e1e1e;border:1px solid rgba(255,255,255,0.05);">
+            <p class="font-semibold text-sm mb-1">기능 변경 공유 프로세스 필요</p>
+            <p class="text-gray-400 text-sm leading-relaxed">프로젝트 진행 중 BO 기능 개편 사항이 사전에 공유되지 않아 방향성 검토 과정에서 일부 재조정이 발생하였습니다. 향후에는 기능 변경 시 관련 부서 간 사전 노티 및 공유 프로세스를 정립하여 보다 효율적으로 협업할 필요가 있다고 판단하였습니다.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- 산출물 -->
+      <div>
+        <h3 class="text-lg font-bold mb-4" style="color:#FF5C00;">산출물</h3>
+        <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
+          <div class="flex flex-col gap-1">
+            <img src="./images/faq-review.png" alt="리뷰장표" class="thumb-placeholder rounded-xl aspect-video object-cover w-full">
+            <p class="text-center text-xs text-gray-600">리뷰장표</p>
+          </div>
+          <div class="flex flex-col gap-1">
+            <img src="./images/faq-wireframe.png" alt="와이어프레임" class="thumb-placeholder rounded-xl aspect-video object-cover w-full">
+            <p class="text-center text-xs text-gray-600">와이어프레임</p>
+          </div>
+          <div class="flex flex-col gap-1">
+            <img src="./images/faq-design.png" alt="디자인 산출물" class="thumb-placeholder rounded-xl aspect-video object-cover w-full">
+            <p class="text-center text-xs text-gray-600">디자인 산출물</p>
+          </div>
+        </div>
+        <a href="https://www.figma.com/design/U19XbRuYZ0Lx1LlIcc1qHB/26--%EA%B3%A8%EC%84%B8%ED%8C%85-%EA%B4%80%EB%A0%A8-%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8-%EC%9E%A5%ED%91%9C--naya-?node-id=6028-5" class="inline-flex items-center gap-2 mt-4 px-5 py-2.5 rounded-full text-sm font-semibold transition-colors" style="background:#FF5C00;color:#fff;">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 3v18M15 3v18M3 9h18M3 15h18"/></svg>
+          Figma에서 보기
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- Modal 2: 시스템 메일 -->
+<div id="modal2" class="modal-overlay fixed inset-0 z-50 flex items-start justify-center px-4 py-8 opacity-0 pointer-events-none" style="background:rgba(0,0,0,0.85);overflow-y:auto;">
+  <div class="modal-inner w-full max-w-3xl rounded-2xl p-8 md:p-12 relative" style="background:#141414;border:1px solid rgba(255,255,255,0.07);transform:translateY(24px);opacity:0;">
+    <button onclick="closeModal('modal2')" class="absolute top-6 right-6 text-gray-600 hover:text-white transition-colors">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>
+    </button>
+
+    <p class="section-label mb-3">Project 02</p>
+    <h2 class="text-3xl md:text-4xl font-black mb-2">시스템 메일 개선</h2>
+    <p class="text-gray-500 text-sm mb-8">2025.09.22 ~ 진행 중</p>
+
+    <div class="space-y-10">
+      <div>
+        <h3 class="text-lg font-bold mb-3" style="color:#FF5C00;">프로젝트 개요</h3>
+        <div class="text-gray-300 text-sm leading-relaxed space-y-2">
+          <p class="font-semibold text-white">상반기 목표</p>
+          <ul class="list-disc list-inside text-gray-400 space-y-1 ml-2">
+            <li>일반/구독 주문 유형 7건 구성 확정 및 퍼블리싱 반영</li>
+            <li>상품 배송 관련 3건 와이어프레임 제작</li>
+            <li>전체 케이스 및 운영 방향 장표 제작</li>
+          </ul>
+          <p class="font-semibold text-white mt-2">주요 역할</p>
+          <ul class="list-disc list-inside text-gray-400 space-y-1 ml-2">
+            <li>시스템 메일 UX/UI 구조 설계</li>
+            <li>구독 메일 케이스 구조화 및 와이어프레임 제작</li>
+            <li>UX라이팅 및 운영 방향 설계</li>
+            <li>광고주·UX라이팅·IBM 간 커뮤니케이션 리딩</li>
+          </ul>
+        </div>
+      </div>
+
+      <div>
+        <h3 class="text-lg font-bold mb-3" style="color:#FF5C00;">추진 배경</h3>
+        <p class="text-gray-300 text-sm leading-relaxed">현재 삼성닷컴의 시스템 메일은 단일 구매 프로세스 기준으로 설계되어 있어, 구독 서비스 확대에 따른 다양한 케이스를 포괄하지 못하는 상황이었습니다. 이에 구독 관련 메일 UX/UI를 개선하고 전체 케이스에 대한 통일성 있는 구조를 구축하고자 프로젝트를 추진하였습니다. 고객에게는 명확한 정보 안내를 통한 신뢰 경험을 제공하고, 실무적으로는 운영이 용이한 메일 구성 체계를 마련하는 것을 목적으로 하였습니다.</p>
+      </div>
+
+      <div>
+        <h3 class="text-lg font-bold mb-4" style="color:#FF5C00;">핵심 수행 내용</h3>
+        <div class="space-y-4">
+          <div class="p-4 rounded-xl" style="background:rgba(255,92,0,0.05);border:1px solid rgba(255,92,0,0.1);">
+            <p class="font-bold text-sm mb-1">1. 구독 시스템 메일 구조화</p>
+            <p class="text-gray-400 text-sm leading-relaxed">구독 서비스 관련 전체 이메일 플로우를 구조화하고, 주문·배송·재입고 등 다양한 케이스를 정리하여 운영 가능한 구조로 체계화하였습니다.</p>
+          </div>
+          <div class="p-4 rounded-xl" style="background:rgba(255,92,0,0.05);border:1px solid rgba(255,92,0,0.1);">
+            <p class="font-bold text-sm mb-1">2. 현행 UX 분석 기반 핵심 정보 재정의</p>
+            <p class="text-gray-400 text-sm leading-relaxed">PD·장바구니·결제 프로세스 등 현행 UX를 직접 분석하여, 고객이 실제로 확인해야 하는 핵심 정보(구독 기간·혜택·케어서비스 등)를 선별하고 정보 우선순위를 재정의하였습니다.</p>
+          </div>
+          <div class="p-4 rounded-xl" style="background:rgba(255,92,0,0.05);border:1px solid rgba(255,92,0,0.1);">
+            <p class="font-bold text-sm mb-1">3. 글로벌 가이드 기반 UX 통일성 강화</p>
+            <p class="text-gray-400 text-sm leading-relaxed">글로벌 가이드를 기반으로 전체 시스템 메일 구조 및 UX라이팅 방향을 정리하여, 삼성닷컴 내 일관된 사용자 경험을 제공할 수 있도록 설계하였습니다.</p>
+          </div>
+          <div class="p-4 rounded-xl" style="background:rgba(255,92,0,0.05);border:1px solid rgba(255,92,0,0.1);">
+            <p class="font-bold text-sm mb-1">4. 협업 및 커뮤니케이션 리딩</p>
+            <p class="text-gray-400 text-sm leading-relaxed">광고주·UX라이팅·IBM 간 커뮤니케이션을 지속적으로 리딩하며, 각 조직 간 요구사항을 조율하고 프로젝트 방향성을 정리하였습니다.</p>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <h3 class="text-lg font-bold mb-4" style="color:#FF5C00;">주요 성과</h3>
+        <table class="w-full text-sm">
+          <thead><tr style="border-bottom:1px solid rgba(255,92,0,0.3);">
+            <th class="text-left py-2 text-gray-500 font-medium w-1/3">항목</th>
+            <th class="text-left py-2 text-gray-500 font-medium">내용</th>
+          </tr></thead>
+          <tbody>
+            <tr class="table-row"><td class="py-3 pr-4 text-gray-400">와이어프레임</td><td class="py-3 text-gray-200">상반기 목표 전체 케이스 제작 완료</td></tr>
+            <tr class="table-row"><td class="py-3 pr-4 text-gray-400">퍼블리싱</td><td class="py-3 text-gray-200">일반/구독 메일 퍼블리싱 반영 완료</td></tr>
+            <tr class="table-row"><td class="py-3 pr-4 text-gray-400">UX 구조 개선</td><td class="py-3 text-gray-200">배송·재입고 등 다양한 케이스 구조 정립</td></tr>
+            <tr class="table-row"><td class="py-3 pr-4 text-gray-400">협업 리딩</td><td class="py-3 text-gray-200">광고주·UX라이팅·IBM 간 협업 리딩 수행</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div>
+        <h3 class="text-lg font-bold mb-4" style="color:#FF5C00;">기여 포인트</h3>
+        <div class="space-y-3">
+          <div class="flex gap-3 items-start">
+            <span class="mt-1 w-2 h-2 rounded-full flex-shrink-0" style="background:#FF5C00;"></span>
+            <div><p class="font-semibold text-sm">운영 가능한 구조 중심으로 시스템 메일 체계화</p><p class="text-gray-400 text-sm mt-1">단순 화면 제작이 아닌 전체 메일 플로우를 구조화하여, 향후 다양한 케이스에도 확장 가능한 운영 기준을 마련하였습니다.</p></div>
+          </div>
+          <div class="flex gap-3 items-start">
+            <span class="mt-1 w-2 h-2 rounded-full flex-shrink-0" style="background:#FF5C00;"></span>
+            <div><p class="font-semibold text-sm">고객 관점 중심의 핵심 정보 재설계</p><p class="text-gray-400 text-sm mt-1">고객이 실제로 이해해야 하는 핵심 정보를 선별하고 정보 우선순위를 재구성하여, 민감 단계에서도 혼선 없이 정보를 이해할 수 있는 구조를 설계하였습니다.</p></div>
+          </div>
+          <div class="flex gap-3 items-start">
+            <span class="mt-1 w-2 h-2 rounded-full flex-shrink-0" style="background:#FF5C00;"></span>
+            <div><p class="font-semibold text-sm">확장 가능한 가이드라인 구축</p><p class="text-gray-400 text-sm mt-1">이번 와이어프레임을 기반으로 향후 다른 시스템 이메일로도 적용 가능한 구조적 가이드라인 마련.</p></div>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <h3 class="text-lg font-bold mb-4" style="color:#FF5C00;">회고 및 개선 방향</h3>
+        <div class="space-y-3">
+          <div class="p-4 rounded-xl" style="background:#1e1e1e;border:1px solid rgba(255,255,255,0.05);">
+            <p class="font-semibold text-sm mb-1">운영 가이드 문서화 필요</p>
+            <p class="text-gray-400 text-sm leading-relaxed">구독 서비스 확장에 따라 시스템 메일 케이스가 지속적으로 증가하고 있어, 와이어프레임뿐만 아니라 운영 기준까지 함께 문서화할 필요성을 느꼈습니다. 향후에는 메일 유형별 운영 정책과 UX라이팅 기준을 구조화하여 유지보수 효율성을 높일 필요가 있다고 판단하였습니다.</p>
+          </div>
+          <div class="p-4 rounded-xl" style="background:#1e1e1e;border:1px solid rgba(255,255,255,0.05);">
+            <p class="font-semibold text-sm mb-1">시스템 간 연계 구조 사전 검토 필요</p>
+            <p class="text-gray-400 text-sm leading-relaxed">메일 UX/UI 개선 과정에서 운영 정책 및 퍼블리싱 구조와 연결되는 이슈가 다수 발생하였으며, 향후에는 기획 초기 단계에서 시스템 연계 구조를 보다 선제적으로 검토할 필요성을 느꼈습니다.</p>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <h3 class="text-lg font-bold mb-4" style="color:#FF5C00;">산출물</h3>
+        <div class="grid grid-cols-2 gap-4">
+          <div class="flex flex-col gap-1">
+            <img src="./images/mail-review.png" alt="리뷰장표" class="thumb-placeholder rounded-xl aspect-video object-cover w-full">
+            <p class="text-center text-xs text-gray-600">리뷰장표</p>
+          </div>
+          <div class="flex flex-col gap-1">
+            <img src="./images/mail-wireframe.png" alt="와이어프레임" class="thumb-placeholder rounded-xl aspect-video object-cover w-full">
+            <p class="text-center text-xs text-gray-600">와이어프레임</p>
+          </div>
+        </div>
+        <a href="https://www.figma.com/design/U19XbRuYZ0Lx1LlIcc1qHB/26--%EA%B3%A8%EC%84%B8%ED%8C%85-%EA%B4%80%EB%A0%A8-%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8-%EC%9E%A5%ED%91%9C--naya-?node-id=12001-87" class="inline-flex items-center gap-2 mt-4 px-5 py-2.5 rounded-full text-sm font-semibold transition-colors" style="background:#FF5C00;color:#fff;">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 3v18M15 3v18M3 9h18M3 15h18"/></svg>
+          Figma에서 보기
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- Modal 3: AI 챗봇 -->
+<div id="modal3" class="modal-overlay fixed inset-0 z-50 flex items-start justify-center px-4 py-8 opacity-0 pointer-events-none" style="background:rgba(0,0,0,0.85);overflow-y:auto;">
+  <div class="modal-inner w-full max-w-3xl rounded-2xl p-8 md:p-12 relative" style="background:#141414;border:1px solid rgba(255,255,255,0.07);transform:translateY(24px);opacity:0;">
+    <button onclick="closeModal('modal3')" class="absolute top-6 right-6 text-gray-600 hover:text-white transition-colors">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>
+    </button>
+
+    <p class="section-label mb-3">Project 03</p>
+    <h2 class="text-3xl md:text-4xl font-black mb-2">AI 챗봇 개선</h2>
+    <p class="text-gray-500 text-sm mb-8">2026.01 ~ 진행 중</p>
+
+    <div class="space-y-10">
+      <div>
+        <h3 class="text-lg font-bold mb-3" style="color:#FF5C00;">프로젝트 개요</h3>
+        <div class="text-sm leading-relaxed space-y-2">
+          <p class="font-semibold text-white">상반기 목표</p>
+          <ul class="list-disc list-inside text-gray-400 space-y-1 ml-2">
+            <li>유저 플로우별 시나리오 구성안 제작</li>
+            <li>챗봇 UX/UI 레퍼런스 리서치</li>
+            <li>루비콘 대화내역 분석 및 인사이트 도출</li>
+          </ul>
+          <p class="font-semibold text-white mt-2">주요 역할</p>
+          <ul class="list-disc list-inside text-gray-400 space-y-1 ml-2">
+            <li>구독 특화 챗봇 시나리오 설계</li>
+            <li>챗봇 UX/UI 및 온보딩 구조 제안</li>
+            <li>루비콘 대화 데이터 분석</li>
+            <li>AI 기반 탐색/추천 UX 방향성 제안</li>
+          </ul>
+        </div>
+      </div>
+
+      <div>
+        <h3 class="text-lg font-bold mb-3" style="color:#FF5C00;">추진 배경</h3>
+        <p class="text-gray-300 text-sm leading-relaxed">현재 글로벌 공통으로 운영 중인 루비콘 챗봇은 존재하였으나, 구독 서비스 관련 정보와 시나리오는 충분히 반영되지 않은 상황이었습니다. 특히 구독 서비스는 오프라인 상담 영향력이 큰 특성을 가지고 있어, 온라인 환경에서도 고객이 보다 쉽게 구독 관련 정보를 이해하고 활용할 수 있는 UX 구조가 필요하다고 판단하였습니다. 이에 SEC 구독 서비스에 특화된 챗봇 시나리오를 기획하고, 향후 다른 로컬에서도 활용 가능한 템플릿 구조를 구축하고자 프로젝트를 추진하였습니다.</p>
+      </div>
+
+      <div>
+        <h3 class="text-lg font-bold mb-4" style="color:#FF5C00;">핵심 수행 내용</h3>
+        <div class="space-y-4">
+          <div class="p-4 rounded-xl" style="background:rgba(255,92,0,0.05);border:1px solid rgba(255,92,0,0.1);">
+            <p class="font-bold text-sm mb-1">1. 구독 특화 챗봇 시나리오 구조 설계</p>
+            <p class="text-gray-400 text-sm leading-relaxed">구독 관련 주요 유저 플로우를 기반으로 시나리오를 구조화하고, 고객 상황별로 적절한 정보와 옵션을 제공할 수 있도록 카테고리를 설계하였습니다. 단순 Q&A 형태가 아닌, 고객이 실제로 구독 옵션을 비교·이해·선택할 수 있도록 흐름 중심의 시나리오 구조를 제안하였습니다.</p>
+          </div>
+          <div class="p-4 rounded-xl" style="background:rgba(255,92,0,0.05);border:1px solid rgba(255,92,0,0.1);">
+            <p class="font-bold text-sm mb-1">2. 챗봇 UX/UI 및 온보딩 구조 제안</p>
+            <p class="text-gray-400 text-sm leading-relaxed">국내외 챗봇 UX/UI 레퍼런스를 분석하고, 이를 기반으로 웰커밍 및 온보딩 화면에 대한 UX/UI 개선 방향 또한 함께 제안하였습니다. 특히 초기 진입 단계에서 고객이 챗봇 활용 목적을 빠르게 이해할 수 있도록 접근 구조와 카테고리 노출 방식을 설계하였습니다.</p>
+          </div>
+          <div class="p-4 rounded-xl" style="background:rgba(255,92,0,0.05);border:1px solid rgba(255,92,0,0.1);">
+            <p class="font-bold text-sm mb-1">3. 답변 구조 및 추천 방식 체계화</p>
+            <p class="text-gray-400 text-sm leading-relaxed">답변의 주요 특징, 연관 질문, 추천 제품 노출 방식 등을 구조화하여 정리함으로써 가독성 높은 답변 시나리오를 구축하였습니다. 이를 통해 단순 정보 제공을 넘어 고객이 다음 행동으로 자연스럽게 이어질 수 있는 구조를 설계하였습니다.</p>
+          </div>
+          <div class="p-4 rounded-xl" style="background:rgba(255,92,0,0.05);border:1px solid rgba(255,92,0,0.1);">
+            <p class="font-bold text-sm mb-1">4. 루비콘 대화 데이터 분석 및 인사이트 도출</p>
+            <p class="text-gray-400 text-sm leading-relaxed">루비콘 기존 대화 데이터를 분석하여 고객의 챗봇 활용 성향과 주요 질문 유형을 정리하였습니다. 특히 고객은 단순 탐색보다 "결정을 돕는 정보"를 필요로 한다는 인사이트를 도출하였으며, 이를 기반으로 선택 근거 중심의 UX 방향성을 제안하였습니다.</p>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <h3 class="text-lg font-bold mb-4" style="color:#FF5C00;">주요 성과</h3>
+        <table class="w-full text-sm">
+          <thead><tr style="border-bottom:1px solid rgba(255,92,0,0.3);">
+            <th class="text-left py-2 text-gray-500 font-medium w-1/3">항목</th>
+            <th class="text-left py-2 text-gray-500 font-medium">내용</th>
+          </tr></thead>
+          <tbody>
+            <tr class="table-row"><td class="py-3 pr-4 text-gray-400">시나리오 설계</td><td class="py-3 text-gray-200">유저 플로우 기반 구독 챗봇 시나리오 구조화</td></tr>
+            <tr class="table-row"><td class="py-3 pr-4 text-gray-400">UX/UI 개선</td><td class="py-3 text-gray-200">온보딩 및 웰커밍 UX/UI 방향 제안</td></tr>
+            <tr class="table-row"><td class="py-3 pr-4 text-gray-400">데이터 분석</td><td class="py-3 text-gray-200">루비콘 대화내역 분석 및 고객 활용 패턴 정리</td></tr>
+            <tr class="table-row"><td class="py-3 pr-4 text-gray-400">답변 구조화</td><td class="py-3 text-gray-200">연관 질문·추천 제품 노출 방식 체계화</td></tr>
+            <tr class="table-row"><td class="py-3 pr-4 text-gray-400">협업 활용</td><td class="py-3 text-gray-200">AX·D2C·한국총괄 논의 기반 마련</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div>
+        <h3 class="text-lg font-bold mb-4" style="color:#FF5C00;">기여 포인트</h3>
+        <div class="space-y-3">
+          <div class="flex gap-3 items-start">
+            <span class="mt-1 w-2 h-2 rounded-full flex-shrink-0" style="background:#FF5C00;"></span>
+            <div><p class="font-semibold text-sm">구독 서비스 특성에 맞는 챗봇 UX 방향 제안</p><p class="text-gray-400 text-sm mt-1">구독 서비스의 복잡한 가격 구조와 옵션 특성을 고려하여, 고객이 보다 쉽게 이해하고 선택할 수 있는 흐름 중심의 챗봇 구조를 설계하였습니다.</p></div>
+          </div>
+          <div class="flex gap-3 items-start">
+            <span class="mt-1 w-2 h-2 rounded-full flex-shrink-0" style="background:#FF5C00;"></span>
+            <div><p class="font-semibold text-sm">데이터 기반 UX 인사이트 도출</p><p class="text-gray-400 text-sm mt-1">대규모 대화 데이터를 AI 기반으로 빠르게 정리·분석하였으며, 단순 정보 탐색보다 "선택 근거를 제공하는 UX"가 중요하다는 방향성을 도출하였습니다.</p></div>
+          </div>
+          <div class="flex gap-3 items-start">
+            <span class="mt-1 w-2 h-2 rounded-full flex-shrink-0" style="background:#FF5C00;"></span>
+            <div><p class="font-semibold text-sm">시나리오를 넘어 UX 구조까지 확장 제안</p><p class="text-gray-400 text-sm mt-1">단순 시나리오 작성에 그치지 않고, 웰커밍 UX/UI 및 답변 구조 개선까지 함께 제안하며 프로젝트 범위를 다각도로 확장하는 데 기여하였습니다.</p></div>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <h3 class="text-lg font-bold mb-4" style="color:#FF5C00;">회고 및 개선 방향</h3>
+        <div class="space-y-3">
+          <div class="p-4 rounded-xl" style="background:#1e1e1e;border:1px solid rgba(255,255,255,0.05);">
+            <p class="font-semibold text-sm mb-1">프로젝트 역할 정의 및 협업 구조 정립 필요</p>
+            <p class="text-gray-400 text-sm leading-relaxed">프로젝트 초기 PTK 역할 범위와 시나리오 담당 영역에 대한 명확한 정의가 부재하여, 일부 작업이 D2C와 중복 진행되는 이슈가 발생하였습니다. 향후에는 프로젝트 착수 전 관련 부서 및 역할 범위를 명확히 정리하고, WBS 기반 협업 프로세스를 사전에 정립할 필요성을 느꼈습니다.</p>
+          </div>
+          <div class="p-4 rounded-xl" style="background:#1e1e1e;border:1px solid rgba(255,255,255,0.05);">
+            <p class="font-semibold text-sm mb-1">챗봇 운영 관점의 후속 구조 검토 필요</p>
+            <p class="text-gray-400 text-sm leading-relaxed">시나리오 설계 중심으로 프로젝트가 진행되었으나, 향후에는 운영 정책·추천 로직·데이터 관리 방식까지 포함한 장기 운영 구조를 함께 검토할 필요가 있다고 판단하였습니다.</p>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <h3 class="text-lg font-bold mb-4" style="color:#FF5C00;">산출물</h3>
+        <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
+          <div class="flex flex-col gap-1">
+            <img src="./images/chatbot-review1.png" alt="리뷰장표 1차" class="thumb-placeholder rounded-xl aspect-video object-cover w-full">
+            <p class="text-center text-xs text-gray-600">리뷰장표 1차</p>
+          </div>
+          <div class="flex flex-col gap-1">
+            <img src="./images/chatbot-review2.png" alt="리뷰장표 2차" class="thumb-placeholder rounded-xl aspect-video object-cover w-full">
+            <p class="text-center text-xs text-gray-600">리뷰장표 2차</p>
+          </div>
+          <div class="flex flex-col gap-1">
+            <img src="./images/chatbot-scenario.png" alt="세부 시나리오" class="thumb-placeholder rounded-xl aspect-video object-cover w-full">
+            <p class="text-center text-xs text-gray-600">세부 시나리오</p>
+          </div>
+        </div>
+        <a href="https://www.figma.com/design/U19XbRuYZ0Lx1LlIcc1qHB/26--%EA%B3%A8%EC%84%B8%ED%8C%85-%EA%B4%80%EB%A0%A8-%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8-%EC%9E%A5%ED%91%9C--naya-?node-id=12002-4" class="inline-flex items-center gap-2 mt-4 px-5 py-2.5 rounded-full text-sm font-semibold transition-colors" style="background:#FF5C00;color:#fff;">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 3v18M15 3v18M3 9h18M3 15h18"/></svg>
+          Figma에서 보기
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- Modal 4: AI UX라이팅 -->
+<div id="modal4" class="modal-overlay fixed inset-0 z-50 flex items-start justify-center px-4 py-8 opacity-0 pointer-events-none" style="background:rgba(0,0,0,0.85);overflow-y:auto;">
+  <div class="modal-inner w-full max-w-3xl rounded-2xl p-8 md:p-12 relative" style="background:#141414;border:1px solid rgba(255,255,255,0.07);transform:translateY(24px);opacity:0;">
+    <button onclick="closeModal('modal4')" class="absolute top-6 right-6 text-gray-600 hover:text-white transition-colors">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>
+    </button>
+
+    <p class="section-label mb-3">Project 04</p>
+    <h2 class="text-3xl md:text-4xl font-black mb-2">AI 자동 점검<br/>UX라이팅 서비스 구축</h2>
+    <p class="text-gray-500 text-sm mb-8">2025.04 ~ 진행 중</p>
+
+    <div class="space-y-10">
+      <div>
+        <h3 class="text-lg font-bold mb-3" style="color:#FF5C00;">프로젝트 개요</h3>
+        <div class="text-sm leading-relaxed space-y-2">
+          <p class="font-semibold text-white">상반기 목표</p>
+          <ul class="list-disc list-inside text-gray-400 space-y-1 ml-2">
+            <li>스터디 기반 실무 활용 프롬프트 공유</li>
+            <li>스터디 및 자격증 취득 계획 수립</li>
+            <li>AI 프로덕트 아이템 및 제작 범위 선정</li>
+          </ul>
+          <p class="font-semibold text-white mt-2">주요 역할</p>
+          <ul class="list-disc list-inside text-gray-400 space-y-1 ml-2">
+            <li>AI 기반 UX라이팅 점검 서비스 기획</li>
+            <li>프롬프트 설계 및 MVP 구축</li>
+            <li>WBS 및 프로젝트 운영 구조 설계</li>
+            <li>Claude Code 기반 프론트 구축</li>
+          </ul>
+        </div>
+      </div>
+
+      <div>
+        <h3 class="text-lg font-bold mb-3" style="color:#FF5C00;">추진 배경</h3>
+        <p class="text-gray-300 text-sm leading-relaxed">UX라이팅 가이드가 존재함에도 불구하고, 실제 프로젝트에서는 실무자들의 활용 빈도가 낮고 UX라이팅팀 검수 의존도가 높은 상황이 지속되고 있었습니다. 이로 인해 프로젝트 일정 지연 및 커뮤니케이션 병목이 발생하였으며, 검수되지 않은 라이팅의 품질 편차 또한 존재하였습니다. 이에 반복적으로 발생하는 문구 작성 및 검수 과정을 구조화하고, AI를 활용하여 실무자가 보다 빠르게 UX라이팅 품질을 점검할 수 있는 서비스 가능성을 검토하고자 프로젝트를 추진하였습니다.</p>
+      </div>
+
+      <div>
+        <h3 class="text-lg font-bold mb-4" style="color:#FF5C00;">핵심 수행 내용</h3>
+        <div class="space-y-4">
+          <div class="p-4 rounded-xl" style="background:rgba(255,92,0,0.05);border:1px solid rgba(255,92,0,0.1);">
+            <p class="font-bold text-sm mb-1">1. UX라이팅 점검 서비스 MVP 기획</p>
+            <p class="text-gray-400 text-sm leading-relaxed">실무 환경에서 반복적으로 발생하는 UX라이팅 검수 과정을 분석하고, AI가 1차 점검 및 대체 문구를 제안할 수 있는 서비스 구조를 설계하였습니다. 점검 결과를 규칙 ID 기반으로 제공하는 구조를 고려하여, 실무자가 점검 근거를 명확하게 이해할 수 있도록 방향성을 설계하였습니다.</p>
+          </div>
+          <div class="p-4 rounded-xl" style="background:rgba(255,92,0,0.05);border:1px solid rgba(255,92,0,0.1);">
+            <p class="font-bold text-sm mb-1">2. 프롬프트 기반 검수 구조 설계</p>
+            <p class="text-gray-400 text-sm leading-relaxed">UX라이팅 가이드와 페르소나 작업을 기반으로 1차 점검 프롬프트를 직접 작성하였으며, Claude 및 GPT를 활용한 챗봇 형태의 검수 테스트를 진행하였습니다. PDF 기반 UX라이팅 가이드 내용을 실제로 학습 및 활용 가능한 수준까지 연결하며 프롬프트 기반 검수 가능성을 검증하였습니다.</p>
+          </div>
+          <div class="p-4 rounded-xl" style="background:rgba(255,92,0,0.05);border:1px solid rgba(255,92,0,0.1);">
+            <p class="font-bold text-sm mb-1">3. Claude Code 기반 프론트 구축</p>
+            <p class="text-gray-400 text-sm leading-relaxed">Claude Code를 활용하여 1차 프론트 화면을 빠르게 구축하고, 서비스 구조 및 사용자 흐름을 검증할 수 있는 MVP 환경을 마련하였습니다. 단순 아이디어 단계가 아닌 실제 동작 가능한 서비스 형태까지 구현을 진행하였습니다.</p>
+          </div>
+          <div class="p-4 rounded-xl" style="background:rgba(255,92,0,0.05);border:1px solid rgba(255,92,0,0.1);">
+            <p class="font-bold text-sm mb-1">4. 프로젝트 운영 및 WBS 구조화</p>
+            <p class="text-gray-400 text-sm leading-relaxed">현업 프로젝트와 병행 가능한 수준으로 전체 WBS를 세분화하고, 페이즈 기반으로 프로젝트를 구조화하여 일정 지연 없이 프로젝트를 운영할 수 있도록 관리하였습니다. 처음으로 PO 역할을 수행하며 UX라이팅 조직과의 협업 및 프로젝트 운영을 주도하였습니다.</p>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <h3 class="text-lg font-bold mb-4" style="color:#FF5C00;">주요 성과</h3>
+        <table class="w-full text-sm">
+          <thead><tr style="border-bottom:1px solid rgba(255,92,0,0.3);">
+            <th class="text-left py-2 text-gray-500 font-medium w-1/3">항목</th>
+            <th class="text-left py-2 text-gray-500 font-medium">내용</th>
+          </tr></thead>
+          <tbody>
+            <tr class="table-row"><td class="py-3 pr-4 text-gray-400">WBS 설계</td><td class="py-3 text-gray-200">전체 서비스 구축 WBS 작성 완료</td></tr>
+            <tr class="table-row"><td class="py-3 pr-4 text-gray-400">프롬프트 구축</td><td class="py-3 text-gray-200">UX라이팅 점검 프롬프트 설계 및 테스트 완료</td></tr>
+            <tr class="table-row"><td class="py-3 pr-4 text-gray-400">AI 검증</td><td class="py-3 text-gray-200">Claude/GPT 기반 챗봇형 점검 서비스 검증</td></tr>
+            <tr class="table-row"><td class="py-3 pr-4 text-gray-400">프론트 구축</td><td class="py-3 text-gray-200">Claude Code 기반 1차 화면 구현 완료</td></tr>
+            <tr class="table-row"><td class="py-3 pr-4 text-gray-400">프로젝트 운영</td><td class="py-3 text-gray-200">페이즈 기반 프로젝트 운영 및 협업 리딩 수행</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div>
+        <h3 class="text-lg font-bold mb-4" style="color:#FF5C00;">기여 포인트</h3>
+        <div class="space-y-3">
+          <div class="flex gap-3 items-start">
+            <span class="mt-1 w-2 h-2 rounded-full flex-shrink-0" style="background:#FF5C00;"></span>
+            <div><p class="font-semibold text-sm">프롬프트 기반 MVP 직접 구축</p><p class="text-gray-400 text-sm mt-1">기존 아이디어 수준에 머물지 않고, 프롬프트 설계와 테스트를 통해 실제 동작 가능한 UX라이팅 점검 MVP를 직접 구축하였습니다.</p></div>
+          </div>
+          <div class="flex gap-3 items-start">
+            <span class="mt-1 w-2 h-2 rounded-full flex-shrink-0" style="background:#FF5C00;"></span>
+            <div><p class="font-semibold text-sm">AI 활용 기반 실무 프로세스 구조화</p><p class="text-gray-400 text-sm mt-1">반복적으로 발생하는 UX라이팅 검수 과정을 AI 기반으로 구조화하며, 향후 실무 효율 개선 가능성을 검토할 수 있는 기반을 마련하였습니다.</p></div>
+          </div>
+          <div class="flex gap-3 items-start">
+            <span class="mt-1 w-2 h-2 rounded-full flex-shrink-0" style="background:#FF5C00;"></span>
+            <div><p class="font-semibold text-sm">빠른 프로토타이핑 및 프로젝트 리딩 수행</p><p class="text-gray-400 text-sm mt-1">Claude Code를 활용하여 빠르게 프론트 구조를 구현하고, WBS 기반으로 프로젝트를 운영하며 신규 프로젝트를 실무와 병행 가능한 수준으로 관리하였습니다.</p></div>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <h3 class="text-lg font-bold mb-4" style="color:#FF5C00;">회고 및 개선 방향</h3>
+        <div class="space-y-3">
+          <div class="p-4 rounded-xl" style="background:#1e1e1e;border:1px solid rgba(255,255,255,0.05);">
+            <p class="font-semibold text-sm mb-1">사내 보안 환경 고려 필요</p>
+            <p class="text-gray-400 text-sm leading-relaxed">사내 보안 프로그램으로 인해 외부 API 연결이 제한되면서, 일부 AI 점검 기능이 원활히 동작하지 않는 이슈가 발생하였습니다. 향후에는 사내 네트워크 정책과 외부 AI 서비스 활용 범위를 사전에 검토하여 테스트 환경을 보다 안정적으로 구축할 필요성을 느꼈습니다.</p>
+          </div>
+          <div class="p-4 rounded-xl" style="background:#1e1e1e;border:1px solid rgba(255,255,255,0.05);">
+            <p class="font-semibold text-sm mb-1">서비스 운영 관점의 후속 구조 필요</p>
+            <p class="text-gray-400 text-sm leading-relaxed">현재는 MVP 중심으로 검수 가능성을 검증하는 단계까지 진행하였으나, 향후에는 운영 정책·권한 구조·가이드 업데이트 체계 등 장기 운영 관점의 구조 설계가 추가적으로 필요하다고 판단하였습니다.</p>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <h3 class="text-lg font-bold mb-4" style="color:#FF5C00;">산출물</h3>
+        <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
+          <div class="flex flex-col gap-1">
+            <img src="./images/ai-overview.png" alt="개요장표" class="thumb-placeholder rounded-xl aspect-video object-cover w-full">
+            <p class="text-center text-xs text-gray-600">개요장표</p>
+          </div>
+          <div class="flex flex-col gap-1">
+            <img src="./images/ai-wbs.png" alt="WBS" class="thumb-placeholder rounded-xl aspect-video object-cover w-full">
+            <p class="text-center text-xs text-gray-600">WBS</p>
+          </div>
+          <div class="flex flex-col gap-1">
+            <img src="./images/ai-prototype.png" alt="프로토타입" class="thumb-placeholder rounded-xl aspect-video object-cover w-full">
+            <p class="text-center text-xs text-gray-600">프로토타입</p>
+          </div>
+        </div>
+        <a href="https://www.figma.com/design/U19XbRuYZ0Lx1LlIcc1qHB/26--%EA%B3%A8%EC%84%B8%ED%8C%85-%EA%B4%80%EB%A0%A8-%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8-%EC%9E%A5%ED%91%9C--naya-?node-id=12002-5" class="inline-flex items-center gap-2 mt-4 px-5 py-2.5 rounded-full text-sm font-semibold transition-colors" style="background:#FF5C00;color:#fff;">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 3v18M15 3v18M3 9h18M3 15h18"/></svg>
+          Figma에서 보기
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- Modal 5: 닷컴 개선 -->
+<div id="modal5" class="modal-overlay fixed inset-0 z-50 flex items-start justify-center px-4 py-8 opacity-0 pointer-events-none" style="background:rgba(0,0,0,0.85);overflow-y:auto;">
+  <div class="modal-inner w-full max-w-3xl rounded-2xl p-8 md:p-12 relative" style="background:#141414;border:1px solid rgba(255,255,255,0.07);transform:translateY(24px);opacity:0;">
+    <button onclick="closeModal('modal5')" class="absolute top-6 right-6 text-gray-600 hover:text-white transition-colors">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>
+    </button>
+
+    <p class="section-label mb-3">Project 05</p>
+    <h2 class="text-3xl md:text-4xl font-black mb-2">닷컴 개선 프로젝트</h2>
+    <p class="text-gray-500 text-sm mb-2">2026 상반기</p>
+    <div class="flex gap-2 mb-8">
+      <span class="tag text-xs px-3 py-1 rounded-full">매장상담 예약 UX 개선</span>
+      <span class="tag text-xs px-3 py-1 rounded-full">비교하기 팝업 개선</span>
+    </div>
+
+    <div class="space-y-10">
+      <div>
+        <h3 class="text-lg font-bold mb-3" style="color:#FF5C00;">추진 배경</h3>
+        <p class="text-gray-300 text-sm leading-relaxed">기존 리뱀프 프로젝트를 대체하여, 고객 접점 개선 효과가 보다 직접적으로 드러날 수 있는 두 가지 세부 프로젝트로 방향을 전환하였습니다. O2O 서비스 확대 흐름에 맞춰 온·오프라인 경험을 연결하는 UX 개선에 집중하였습니다.</p>
+      </div>
+
+      <!-- 세부 프로젝트 1 -->
+      <div>
+        <div class="flex items-center gap-3 mb-4">
+          <span class="px-3 py-1 rounded-full text-xs font-bold" style="background:rgba(255,92,0,0.15);color:#FF5C00;">세부 01</span>
+          <h3 class="text-lg font-bold">매장상담 예약 UX 개선</h3>
+        </div>
+
+        <div class="space-y-4 mb-6">
+          <div class="p-4 rounded-xl" style="background:rgba(255,92,0,0.05);border:1px solid rgba(255,92,0,0.1);">
+            <p class="font-bold text-sm mb-2">1. 상담사 선택 기반 예약 플로우 개선</p>
+            <p class="text-gray-400 text-sm leading-relaxed mb-3">기존 "매장 → 날짜 → 시간" 중심의 예약 구조를 분석하고, 상담사 선택 단계를 추가한 새로운 예약 플로우를 설계하였습니다.</p>
+            <div class="flex items-center gap-2 text-xs">
+              <span class="px-2 py-1 rounded" style="background:#222;color:#888;">기존</span>
+              <span class="text-gray-500">매장 → 날짜 → 시간</span>
+            </div>
+            <div class="flex items-center gap-2 text-xs mt-2">
+              <span class="px-2 py-1 rounded" style="background:rgba(255,92,0,0.2);color:#FF7A2B;">개선</span>
+              <span class="text-gray-300">매장 → 날짜 → <strong>상담사</strong> → 시간</span>
+            </div>
+          </div>
+          <div class="p-4 rounded-xl" style="background:rgba(255,92,0,0.05);border:1px solid rgba(255,92,0,0.1);">
+            <p class="font-bold text-sm mb-1">2. 예외 케이스 및 운영 정책 반영</p>
+            <p class="text-gray-400 text-sm leading-relaxed">상담사 휴무 및 예약 불가 상황을 고려하여, 선택 불가 상태(disabled case)를 함께 설계하였습니다. SB가 없음에도 케이스를 정리함으로써 디자인 요건을 명확히 정리했습니다.</p>
+          </div>
+          <div class="p-4 rounded-xl" style="background:rgba(255,92,0,0.05);border:1px solid rgba(255,92,0,0.1);">
+            <p class="font-bold text-sm mb-1">3. 상담사 소개 팝업 및 Phase 2 확장 방향 제안</p>
+            <p class="text-gray-400 text-sm leading-relaxed">Phase 2에서는 상담사 소개 팝업 기능을 추가하여, 고객이 상담사의 전문 분야·핵심 키워드·리뷰 등을 사전에 확인할 수 있는 구조로 확장 예정입니다. 상담사별 예약 시간 데이터를 연결하여 "상담사 중심" 예약 구조로의 개편을 준비 중에 있습니다.</p>
+          </div>
+        </div>
+
+        <table class="w-full text-sm mb-2">
+          <thead><tr style="border-bottom:1px solid rgba(255,92,0,0.3);">
+            <th class="text-left py-2 text-gray-500 font-medium w-1/3">항목</th>
+            <th class="text-left py-2 text-gray-500 font-medium">내용</th>
+          </tr></thead>
+          <tbody>
+            <tr class="table-row"><td class="py-3 pr-4 text-gray-400">예약 UX 개선</td><td class="py-3 text-gray-200">상담사 선택 기반 예약 플로우 설계</td></tr>
+            <tr class="table-row"><td class="py-3 pr-4 text-gray-400">예외 케이스 정의</td><td class="py-3 text-gray-200">휴무 및 예약 불가 상태 구조화</td></tr>
+            <tr class="table-row"><td class="py-3 pr-4 text-gray-400">확장 제안</td><td class="py-3 text-gray-200">상담사 소개 팝업 및 리뷰 구조 제안</td></tr>
+            <tr class="table-row"><td class="py-3 pr-4 text-gray-400">산출물</td><td class="py-3 text-gray-200">PRD 및 디자인 산출물 제작 완료</td></tr>
+          </tbody>
+        </table>
+
+        <div class="mt-4 space-y-3">
+          <div class="flex gap-3 items-start">
+            <span class="mt-1 w-2 h-2 rounded-full flex-shrink-0" style="background:#FF5C00;"></span>
+            <div><p class="font-semibold text-sm">O2O 흐름 기반 고객 경험 개선</p><p class="text-gray-400 text-sm mt-1">온라인 탐색 이후 오프라인 상담까지 이어지는 고객 흐름을 고려하여, 고객이 보다 신뢰감 있게 상담을 예약할 수 있는 구조를 설계하였습니다.</p></div>
+          </div>
+          <div class="flex gap-3 items-start">
+            <span class="mt-1 w-2 h-2 rounded-full flex-shrink-0" style="background:#FF5C00;"></span>
+            <div><p class="font-semibold text-sm">운영 정책까지 고려한 UX 설계</p><p class="text-gray-400 text-sm mt-1">단순 화면 개선에 그치지 않고, 상담사 예약 데이터 및 운영 정책까지 함께 고려하여 실제 서비스 운영 가능한 구조를 검토하였습니다.</p></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 세부 프로젝트 2 -->
+      <div>
+        <div class="flex items-center gap-3 mb-4">
+          <span class="px-3 py-1 rounded-full text-xs font-bold" style="background:rgba(255,92,0,0.15);color:#FF5C00;">세부 02</span>
+          <h3 class="text-lg font-bold">비교하기 팝업 개선</h3>
+        </div>
+
+        <div class="space-y-4 mb-6">
+          <div class="p-4 rounded-xl" style="background:rgba(255,92,0,0.05);border:1px solid rgba(255,92,0,0.1);">
+            <p class="font-bold text-sm mb-1">1. 비교 개수 확장 및 UI 구조 개선</p>
+            <p class="text-gray-400 text-sm leading-relaxed">기존 2개 제품까지만 가능했던 비교하기 기능을 최대 3개 제품까지 확장할 수 있도록 UI 구조를 개선하였습니다.</p>
+            <div class="flex items-center gap-3 mt-2 text-sm">
+              <span class="px-3 py-1 rounded" style="background:#222;color:#888;">기존 2개</span>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#FF5C00" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              <span class="px-3 py-1 rounded" style="background:rgba(255,92,0,0.2);color:#FF7A2B;">최대 3개</span>
+            </div>
+          </div>
+          <div class="p-4 rounded-xl" style="background:rgba(255,92,0,0.05);border:1px solid rgba(255,92,0,0.1);">
+            <p class="font-bold text-sm mb-1">2. 정보 가독성 및 비교 경험 최적화</p>
+            <p class="text-gray-400 text-sm leading-relaxed">제품 옵션 및 비교 결과가 보다 직관적으로 보일 수 있도록 정보 배치와 시각적 우선순위를 조정하였습니다. 특히 고객이 다양한 제품 스펙을 빠르게 탐색하고 비교할 수 있도록 가독성 중심의 레이아웃 구조를 설계하였습니다.</p>
+          </div>
+        </div>
+
+        <table class="w-full text-sm mb-4">
+          <thead><tr style="border-bottom:1px solid rgba(255,92,0,0.3);">
+            <th class="text-left py-2 text-gray-500 font-medium w-1/3">항목</th>
+            <th class="text-left py-2 text-gray-500 font-medium">내용</th>
+          </tr></thead>
+          <tbody>
+            <tr class="table-row"><td class="py-3 pr-4 text-gray-400">비교 기능 개선</td><td class="py-3 text-gray-200">비교 가능 제품 수 2개 → 3개 확장</td></tr>
+            <tr class="table-row"><td class="py-3 pr-4 text-gray-400">UX 개선</td><td class="py-3 text-gray-200">옵션 및 결과 정보 가독성 향상</td></tr>
+            <tr class="table-row"><td class="py-3 pr-4 text-gray-400">구조 개선</td><td class="py-3 text-gray-200">비교 흐름 및 정보 우선순위 재정리</td></tr>
+            <tr class="table-row"><td class="py-3 pr-4 text-gray-400">산출물</td><td class="py-3 text-gray-200">XD 및 Figma 작업 완료</td></tr>
+          </tbody>
+        </table>
+
+        <div class="space-y-3">
+          <div class="flex gap-3 items-start">
+            <span class="mt-1 w-2 h-2 rounded-full flex-shrink-0" style="background:#FF5C00;"></span>
+            <div><p class="font-semibold text-sm">실제 구매 탐색 흐름 기반 UX 개선</p><p class="text-gray-400 text-sm mt-1">고객이 실제 구매 전 다양한 제품을 비교하는 흐름을 고려하여, 탐색 효율성과 정보 이해도를 높이는 방향으로 UI를 개선하였습니다.</p></div>
+          </div>
+          <div class="flex gap-3 items-start">
+            <span class="mt-1 w-2 h-2 rounded-full flex-shrink-0" style="background:#FF5C00;"></span>
+            <div><p class="font-semibold text-sm">복잡한 비교 정보의 구조화</p><p class="text-gray-400 text-sm mt-1">제품 옵션 및 결과 정보를 보다 직관적으로 구조화하여, 고객이 빠르게 차이를 인지하고 비교할 수 있는 UX를 설계하였습니다.</p></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 통합 회고 -->
+      <div>
+        <h3 class="text-lg font-bold mb-4" style="color:#FF5C00;">회고 및 개선 방향</h3>
+        <div class="space-y-3">
+          <div class="p-4 rounded-xl" style="background:#1e1e1e;border:1px solid rgba(255,255,255,0.05);">
+            <p class="font-semibold text-sm mb-1">운영 데이터 기반 개인화 구조 검토 필요</p>
+            <p class="text-gray-400 text-sm leading-relaxed">매장상담 예약 기능은 향후 상담 이력·상담사 선호도·리뷰 데이터와 연결될 경우 더욱 개인화된 예약 경험으로 확장 가능성이 높다고 판단하였습니다.</p>
+          </div>
+          <div class="p-4 rounded-xl" style="background:#1e1e1e;border:1px solid rgba(255,255,255,0.05);">
+            <p class="font-semibold text-sm mb-1">비교 UX 고도화 필요</p>
+            <p class="text-gray-400 text-sm leading-relaxed">현재는 비교 개수 확장 및 가독성 개선 중심으로 진행되었으나, 향후에는 고객 관심 옵션 기반 강조 기능 및 AI 기반 추천 비교 기능 등으로의 확장 가능성을 검토할 필요성을 느꼈습니다.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- 산출물 -->
+      <div>
+        <h3 class="text-lg font-bold mb-4" style="color:#FF5C00;">산출물</h3>
+        <div class="grid grid-cols-2 gap-4">
+          <div class="flex flex-col gap-1">
+            <img src="./images/dotcom-compare.png" alt="비교하기 팝업" class="thumb-placeholder rounded-xl aspect-video object-cover w-full">
+            <p class="text-center text-xs text-gray-600">비교하기 팝업</p>
+          </div>
+          <div class="flex flex-col gap-1">
+            <img src="./images/dotcom-reservation.png" alt="매장상담예약" class="thumb-placeholder rounded-xl aspect-video object-cover w-full">
+            <p class="text-center text-xs text-gray-600">매장상담예약</p>
+          </div>
+        </div>
+        <a href="https://www.figma.com/design/U19XbRuYZ0Lx1LlIcc1qHB/26--%EA%B3%A8%EC%84%B8%ED%8C%85-%EA%B4%80%EB%A0%A8-%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8-%EC%9E%A5%ED%91%9C--naya-?node-id=12002-6" class="inline-flex items-center gap-2 mt-4 px-5 py-2.5 rounded-full text-sm font-semibold transition-colors" style="background:#FF5C00;color:#fff;">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 3v18M15 3v18M3 9h18M3 15h18"/></svg>
+          Figma에서 보기
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<script>
+  function openModal(id) {
+    const overlay = document.getElementById(id);
+    const inner = overlay.querySelector('.modal-inner');
+    overlay.classList.remove('pointer-events-none');
+    overlay.style.opacity = '1';
+    inner.style.transform = 'translateY(0)';
+    inner.style.opacity = '1';
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeModal(id) {
+    const overlay = document.getElementById(id);
+    const inner = overlay.querySelector('.modal-inner');
+    overlay.style.opacity = '0';
+    inner.style.transform = 'translateY(24px)';
+    inner.style.opacity = '0';
+    setTimeout(() => {
+      overlay.classList.add('pointer-events-none');
+      document.body.style.overflow = '';
+    }, 220);
+  }
+
+  document.querySelectorAll('.modal-overlay').forEach(overlay => {
+    overlay.addEventListener('click', (e) => {
+      if (e.target === overlay) closeModal(overlay.id);
+    });
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+      document.querySelectorAll('.modal-overlay:not(.pointer-events-none)').forEach(overlay => {
+        closeModal(overlay.id);
+      });
+    }
+  });
+</script>
+</body>
+</html>
